@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Sanz Store</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            color: white;
+            background: #1f1f1f;
+            overflow-x: hidden;
+        }
+
+        /* Video Background */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(550%);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 5px 0 0;
+        }
+
+        /* Login Section */
+        .login-box {
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            margin: 100px auto;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        /* Produk Section */
+        .content {
+            padding: 50px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .product {
+            background: #1f1f1f;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 300px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.5);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Button */
+        .btn {
+            background: linear-gradient(to right, #ff6347, #ff4500);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #ff4500, #ff6347);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #444;
+        }
+
+        /* Product Details */
+        .product-details {
+            display: none;
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        /* Alert Message */
+        .alert-message {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Video Background -->
+    <video class="video-bg" autoplay muted loop>
+        <source src="https://i.top4top.io/m_3263teou11.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Header -->
+    <header>
+        <h1>Web Sanz Shop</h1>
+        <p>Web Store Amanah 100%</p>
+    </header>
+
+    <!-- Login Section -->
+    <div id="login-section" class="login-box">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" class="form-control" id="username" placeholder="Username" required>
+            <input type="password" class="form-control" id="password" placeholder="Password" required>
+            <button type="submit" class="btn">Login</button>
+            <button type="button" class="btn" onclick="skipLogin()">Lewati</button>
+        </form>
+    </div>
+
+    <!-- Toko Section -->
+    <div id="toko-section" class="content">
+        <h2>Daftar Produk</h2>
+        <div class="product-container">
+            <div class="product">
+                <img src="https://j.top4top.io/p_3344sefp25.png" alt="Produk 1">
+                <h3>Jasa Pembuatan Website</h3>
+                <button class="btn" onclick="showDetails(1)">Lihat Selengkapnya</button>
+            </div>
+            <div class="product">
+                <img src="https://d.top4top.io/p_3344x8roq2.jpg" alt="Produk 2">
+                <h3>TOP UP ALL GAME</h3>
+                <button class="btn" onclick="showDetails(2)">Lihat Selengkapnya</button>
+            </div>
+            <div class="product">
+                <img src="https://e.top4top.io/p_326349qyp0.png" alt="Produk 3">
+                <h3>SUNTIK ALL SOSMED</h3>
+                <button class="btn" onclick="showDetails(3)">Lihat Selengkapnya</button>
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div id="product-details-1" class="product-details">
+            <h2>Daftar Panel</h2>
+            <ul>
+                <li>WEB JUALAN = Rp 100.000</li>
+                <li>WEB PENDAFTARAN = Rp 4.000</li>
+                <li>WEB DAFTAR SISWA = Rp 6.000</li>
+                <li>WEB BERITA = Rp 8.000</li>
+                <li>WEB TOP UP = Rp 10.000<li>
+                
+                <li> NOTE :<li>
+                <li>SEMUA PEMBELIAN DILAYANI SECEPATNYA</li>
+                
+            </ul>
+            <button class="btn" onclick="buyProduct('Panel')">Beli di WhatsApp</button>
+        </div>
+
+        <div id="product-details-2" class="product-details">
+            <h2>TOP UP ALL GAME</h2>
+            <ul>
+                <li>70 Diamond FF = Rp 10.000</li>
+                <li>140 Diamond FF = Rp 20.000</li>
+                <li>210 Diamond FF = Rp 30.000</li>
+                <li>280 Diamond FF = Rp 40.000</li>
+                <li>350 Diamond FF = Rp 50.000</li>
+                <li>420 Diamond FF = Rp 60.000</li>
+                <li>500 Diamond FF = Rp 70.000</li>
+                <li>600 Diamond FF = Rp 80.000</li>
+                <li>700 Diamond FF = Rp 90.000</li>
+                <li>1000 Diamond FF = Rp 130.000<li>
+                <li>GAME LAINNYA SILAHKAN TANYA KE ADMIN</li>
+            </ul>
+            <button class="btn" onclick="buyProduct('Top Up All Game')">Beli di WhatsApp</button>
+        </div>
+
+        <div id="product-details-3" class="product-details">
+    <h2>SUNTIK ALL SOSMED</h2>
+    <ul>
+        <li>Followers IG 100 Folls - Rp 5.000</li>
+        <li>Followers IG 500 Folls - Rp 15.000</li>
+        <li>Followers IG 1000 Folls - Rp 30.000</li>
+        <li>Followers IG 2000 Folls - Rp 55.000</li>
+        <li>Followers IG 3000 Folls - Rp 80.000</li>
+        <li>Followers IG 5000 Folls - Rp 120.000</li>
+        <li>Followers IG 10000 Folls - Rp 240.000</li>
+    </ul>
+    <p><strong>Harga Lengkap Tanya WA</strong></p>
+    <button class="btn" onclick="buyProduct('Suntik Sosmed')">Beli di WhatsApp</button>
+</div>
+
+      
+
+    <script>
+        function skipLogin() {
+            document.getElementById("login-section").style.display = 'none';
+            document.getElementById("toko-section").style.display = 'block';
+        }
+
+        document.getElementById("login-form").onsubmit = function(event) {
+            event.preventDefault();
+            document.getElementById("login-section").style.display = 'none';
+            document.getElementById("toko-section").style.display = 'block';
+        };
+
+        function showDetails(productId) {
+            document.getElementById("product-details-1").style.display = 'none';
+            document.getElementById("product-details-2").style.display = 'none';
+            document.getElementById("product-details-3").style.display = 'none';
+            document.getElementById('product-details-' + productId).style.display = 'block';
+        }
+
+        function buyProduct(product) {
+    const phoneNumber = '6287728192380'; // Replace with your WhatsApp number
+    const message = `ASALAMUALAIKUM MIN SAYA MAU BELI ${product.toUpperCase()}`;
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+        }
+    </script>
+    <script>function showDetails(productId) {
+    // Hide all product details first
+    document.getElementById("product-details-1").style.display = 'none';
+    document.getElementById("product-details-2").style.display = 'none';
+    document.getElementById("product-details-3").style.display = 'none';
+
+    // Show the selected product details
+    document.getElementById('product-details-' + productId).style.display = 'block';
+
+    // Scroll to the displayed product details
+    const productDetails = document.getElementById('product-details-' + productId);
+    productDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
